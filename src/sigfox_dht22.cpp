@@ -1,19 +1,22 @@
-#include <Arduino.h>
-#include <avr/sleep.h>
-#include <avr/power.h>
-#include <Adafruit_Sensor.h>
-#include <DHT.h>
-#include <DHT_U.h>
-#define DHTPIN 11
-#define DHTTYPE DHT22
-DHT dht(DHTPIN, DHTTYPE);
-#define DHT_POWER_SUPPLY_PIN 10
+#include <Arduino.h> // Inclut la bibliothèque principale d'Arduino pour utiliser ses fonctions et macros
+#include <avr/sleep.h> // Inclut la bibliothèque AVR pour les fonctions de gestion du mode veille
+#include <avr/power.h> // Inclut la bibliothèque AVR pour les fonctions de gestion de l'alimentation
+#include <Adafruit_Sensor.h> // Inclut la bibliothèque Adafruit Sensor pour les capteurs
+#include <DHT.h> // Inclut la bibliothèque DHT pour les capteurs de température et d'humidité DHT
+#include <DHT_U.h> // Inclut la bibliothèque DHT Unified pour une interface unifiée avec les capteurs DHT
 
-#include <avr/interrupt.h>
+#define DHTPIN 11 // Définit la broche 11 comme la broche de connexion du capteur DHT
+#define DHTTYPE DHT22 // Définit le type de capteur DHT comme étant le DHT22
 
-#define MICROPROCESOR_VOLTAGE_CAN_MEASUREMENT A0
-#define MICROPROCESOR_VOLTAGE_CAN_PULL_UP_PIN A1
-#define RESET_SIGFOX_MODULE 2
+DHT dht(DHTPIN, DHTTYPE); // Crée une instance de l'objet DHT avec la broche et le type spécifiés
+
+#define DHT_POWER_SUPPLY_PIN 10 // Définit la broche 10 comme la broche d'alimentation du capteur DHT
+
+#include <avr/interrupt.h> // Inclut la bibliothèque AVR pour les fonctions de gestion des interruptions
+
+#define MICROPROCESOR_VOLTAGE_CAN_MEASUREMENT A0 // Définit la broche A0 pour la mesure de la tension du microprocesseur
+#define MICROPROCESOR_VOLTAGE_CAN_PULL_UP_PIN A1 // Définit la broche A1 pour le pull-up de la mesure de la tension du microprocesseur
+#define RESET_SIGFOX_MODULE 2 // Définit la broche 2 pour le reset du module Sigfox
 
 const unsigned int MAX_COUNTER_POWER_DOWN_WAKE_UP = 116;
 unsigned int counter_power_down_wake_up;
